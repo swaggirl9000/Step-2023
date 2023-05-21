@@ -10,3 +10,7 @@ Assignment 2:
     Upgrade the function so that it doesn't have to use every character in the given string.
     Input: small.txt , medium.txt, large.txt
     Output: A file listing the "anagrams with the highest scores" for each word
+
+**Week 2: Data Structures and Algorithms: Trees and Hash Tables**
+Assignment 1: Create a hash table that runs in O(1) Time
+Assignment 2: Create a cache that runs in O(1) Time
