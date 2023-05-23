@@ -4,6 +4,7 @@ import sys
 # See the below test cases to see how it should work.
 
 class Node:
+    #Node that contains the url (key) and content (value)
     def __init__(self, key, value):
         self.key = key
         self.value = value
@@ -20,21 +21,27 @@ class Cache:
         self.head = None
         self.tail = None
     
+    # Adds node into the doubly linked list
     def add(self, node):
+        #if node is first entry, node is both head and tail
         if self.head == None:
             self.head = node
             self.tail = node
         else:
+            #insert the node as the head and shift everything one down
             node.next = self.head
             self.head.prev = node
             self.head = node
 
+    #Remove node from doubly linked list
     def remove(self, node):
+        #If the node has a previous value, it is not the head
         if node.prev:
             node.prev.next = node.next
         else:
             self.head = node.next
 
+        #If the node has a next value, it is not the tail
         if node.next:
             node.next.prev = node.prev  
         else:
