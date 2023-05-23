@@ -8,8 +8,10 @@ def calculate_hash(key):
     assert type(key) == str
     # Note: This is not a good hash function. Do you see why?
     hash = 0
+    m = 1
     for i in key:
-        hash += ord(i) % 23
+        hash += (31*ord(i)) * m
+        m *= 128 
     return hash
 
 
@@ -86,8 +88,9 @@ class HashTable:
         self.buckets[bucket_index] = new_item
         self.item_count += 1
 
-        if self.check_size():
+        if self.check_size() and (self.size()/self.bucket_size) > .7:
             self.reisze(self.item_count*2)
+
         return True
 
     # Get an item from the hash table.
@@ -123,7 +126,7 @@ class HashTable:
                 else:
                     self.buckets[bucket_index] = item.next
                 self.item_count -= 1
-                if self.check_size():
+                if self.check_size() and (self.size()/self.bucket_size) < .3:
                     self.reisze(self.item_count//2)
                 return True
             prev = item
@@ -220,9 +223,8 @@ def functional_test():
 # table when the number of items in the hash table hits some threshold) and
 # 2) tweak the hash function (Hint: think about ways to reduce hash conflicts).
 def performance_test():
-    hash_table = HashTable()
-
     for iteration in range(100):
+        hash_table = HashTable()
         begin = time.time()
         random.seed(iteration)
         for i in range(10000):
