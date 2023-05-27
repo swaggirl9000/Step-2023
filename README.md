@@ -17,3 +17,10 @@ Assignment 2:
 Assignment 1: Create a hash table that runs in O(1) Time
 
 Assignment 2: Create a cache that runs in O(1) Time
+
+**Week 3: Modularization**
+The sample code supports only '+' and '-'. Modify the program and support '*' and '/'.
+Add test cases to the run_test() function.
+Support '(' and ')'. Add test cases to the run_test() function.
+Support abs(), int() and round(). Add test cases to the run_test() function.
+
