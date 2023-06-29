@@ -96,11 +96,11 @@ void *my_malloc(size_t size) {
 
 // BEST FIT
   while (metadata) {
-    if (metadata->size >= best_fit->size && (!best_fit || metadata->size < best_fit->size)) {
-      best_fit = metadata;
-      best_prev = prev;
-      if (metadata->size == size)
-        break;
+    if (metadata->size >= size) {
+      if (!best_fit || metadata->size < best_fit->size){
+        best_fit = metadata;
+        best_prev = prev;
+      }
     }
     prev = metadata;
     metadata = metadata->next;
